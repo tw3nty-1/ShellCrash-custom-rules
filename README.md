@@ -1,7 +1,150 @@
 # ShellCrash-custom-rules
 ShellCrash自定义在线配置规则模版
 
-# 使用方法
+# zashboard ui升级
+1. 下载最新的zashboard [zashboard - releases](https://github.com/Zephyruso/zashboard/releases)
+2. 将文件上传至${CRASHDIR}/ui
+3. 执行命令（命令来源：[9_upgrade.sh](https://github.com/juewuy/ShellCrash/blob/dev/scripts/menus/9_upgrade.sh) getdb()方法）
+```
+cd /data/ShellCrash/ui/
+sed -i "s/127.0.0.1/192.168.2.1/g" ./assets/*.js
+sed -i "s/9090/$9999/g" ./assets/*.js
+```
+
+# 6-3使用方法
+1. 上传yaml文件到${CRASHDIR} 
+2. 进入crash
+```
+root@XiaoQiang:~# crash
+-----------------------------------------------
+欢迎使用ShellCrash！            版本：1.9.4beta1.1
+Mihomo服务正在运行（混合模式），已设置开机启动！
+当前内存占用：56.25 MB，已运行：00小时07分28秒
+TG频道：https://t.me/ShellClash
+-----------------------------------------------
+ 1 启动/重启服务
+ 2 功能设置
+ 3 停止服务
+ 4 启动设置
+ 5 设置自动任务
+ 6 管理配置文件
+ 7 访问与控制
+ 8 工具与优化
+ 9 更新与支持
+-----------------------------------------------
+ 0 退出脚本
+```
+```
+请输入对应数字 > 6
+```
+```
+-----------------------------------------------
+ ShellCrash配置文件管理
+-----------------------------------------------
+ 1 在线生成配置文件(基于Subconverter订阅转换)
+ 2 在线获取配置文件(基于订阅提供者)
+ 3 本地生成配置文件(基于内核providers,推荐！)
+ 4 本地上传完整配置文件
+ 5 设置自动更新
+ 6 自定义配置文件
+ 7 更新配置文件
+ 8 还原配置文件
+ 9 自定义浏览器UA
+-----------------------------------------------
+ 0 返回上级菜单
+```
+```
+请输入对应数字 > 3
+```
+```
+-----------------------------------------------
+你可以在这里快捷管理与生成自定义的providers服务商
+支持在线及本地的Yaml格式配置导入
+-----------------------------------------------
+输入对应数字可管理providers服务商
+ 1 proxy ${url}
+ d 清空providers服务商列表
+ e 清理providers目录文件
+-----------------------------------------------
+按照a-b-c的顺序即可完成配置生成
+ a 添加providers服务商/节点
+ b 选择规则模版     /data/ShellCrash/ShellCrash_RS_Full_BanAds.yaml
+ c 生成基于providers的配置文件
+-----------------------------------------------
+ 0 返回上级菜单
+```
+```
+请输入对应字母或数字 > b
+```
+```
+-----------------------------------------------
+当前规则模版为：/data/ShellCrash/ShellCrash_RS_Full_BanAds.yaml
+请选择在线模版：
+-----------------------------------------------
+ 1 ShellCrash-ruleset极简规则
+ 2 ShellCrash-ruleset全分组规则+去广告
+ 3 DustinWin-ruleset轻量规则
+ 4 DustinWin-ruleset标准规则
+ 5 DustinWin-ruleset标准规则+去广告
+ 6 DustinWin-ruleset全分组规则
+ 7 DustinWin-ruleset全分组规则+去广告
+-----------------------------------------------
+ a 使用本地模版
+-----------------------------------------------
+```
+```
+请输入对应字母或数字 > a
+请输入模版的路径(绝对路径) > /data/ShellCrash/ShellCrash_RS_Full_BanAds.yaml
+```
+```
+设置成功！
+-----------------------------------------------
+你可以在这里快捷管理与生成自定义的providers服务商
+支持在线及本地的Yaml格式配置导入
+-----------------------------------------------
+输入对应数字可管理providers服务商
+ 1 proxy ${url}
+ d 清空providers服务商列表
+ e 清理providers目录文件
+-----------------------------------------------
+按照a-b-c的顺序即可完成配置生成
+ a 添加providers服务商/节点
+ b 选择规则模版     /data/ShellCrash/ShellCrash_RS_Full_BanAds.yaml
+ c 生成基于providers的配置文件
+-----------------------------------------------
+ 0 返回上级菜单
+```
+```
+请输入对应字母或数字 > c
+```
+```
+-----------------------------------------------
+singboxr与mihomo内核的providers配置文件不互通！
+-----------------------------------------------
+```
+```
+确认生成clash配置文件？(1/0) > 1
+```
+```
+-----------------------------------------------
+INFO[2026-01-10T05:43:08.088784875Z] Start initial configuration in progress
+INFO[2026-01-10T05:43:08.095936875Z] Geodata Loader mode: memconservative
+INFO[2026-01-10T05:43:08.096039336Z] Geosite Matcher implementation: succinct
+INFO[2026-01-10T05:43:08.097049336Z] Initial configuration complete, total time: 8ms
+configuration file /tmp/ShellCrash/config.yaml test is successful
+配置文件生成成功！
+```
+```
+是否立即启动/重启服务？(1/0) > 1
+```
+```
+-----------------------------------------------
+服务已启动！
+请使用 http://192.168.2.1:9999/ui 管理内置规则
+
+```
+
+# 6-1使用方法
 1.新增一条在线配置规则模版
 ```
 vi /data/ShellCrash/configs/server.list
@@ -151,20 +294,9 @@ https://${url}$
 
 ```
 
-<strike>
-# 使用方法
-1.在线生成地址
-```
-# 在线生成地址,需对机场${url转义}
-https://sub.jwsc.eu.org/sub?target=clash&ua=clash.meta/mihomo/v1.19.17&insert=true&new_name=true&scv=true&udp=true&exclude=&include=&url=${url}&config=https%3A%2F%2Fgithub.com%2Ftw3nty-1%2FShellCrash-custom-rules%2Fraw%2Fmain%2Frules%2Fcustom_rule_ShellClash_Full_Block.ini
-```
-2.下载文件，访问生成地址，另存为config.yaml,上传到服务器
-```
-/tmp/ShellCrash/config.yaml
-```
-</strike>
-
 # 更新内容
-2026.01.09  update  新增 Acl4SSR分流&游戏&去广告增强 配置（source：[ShellClash_Full_Block.ini](https://github.com/juewuy/ShellCrash/blob/dev/rules/ShellClash_Full_Block.ini)）
+2026.01.10  update  新增 clash_providers 配置, source：[ShellCrash_RS_Full_BanAds.yaml](https://github.com/juewuy/ShellCrash/blob/dev/rules/clash_providers/ShellCrash_RS_Full_BanAds.yaml)
 
-2026.01.09  create  因人工智能节点无直连（关闭代理）选项，所以修改该配置文件（source：[ShellClash.ini](https://github.com/juewuy/ShellCrash/blob/dev/rules/ShellClash.ini)）
+2026.01.09  update  新增 Acl4SSR分流&游戏&去广告增强 配置, source：[ShellClash_Full_Block.ini](https://github.com/juewuy/ShellCrash/blob/dev/rules/ShellClash_Full_Block.ini)
+
+2026.01.09  create  因人工智能节点无直连（关闭代理）选项，所以修改该配置文件, source：[ShellClash.ini](https://github.com/juewuy/ShellCrash/blob/dev/rules/ShellClash.ini)
