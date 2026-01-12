@@ -50,6 +50,7 @@ proxy-groups:
     regs_0280: &reg_eu  "(?i)(🇪🇺|Europe|欧|🇩🇪|Germany|德|🇬🇧|United Kingdom|英|🇫🇷|France|法|🇳🇱|Netherlands|荷兰|🇷🇺|Russia|俄罗斯|🇪🇸|Spain|西班牙|🇮🇹|Italy|意大利|🇨🇭|Switzerland|瑞士|🇸🇪|Sweden|瑞典|🇹🇷|Turkey|土耳其|🇳🇴|Norway|挪威|🇫🇮|Finland|芬兰|🇩🇰|Denmark|丹麦|🇧🇪|Belgium|比利时|🇮🇪|Ireland|爱尔兰|🇦🇹|Austria|奥地利|🇵🇱|Poland|波兰|🇵🇹|Portugal|葡萄牙|🇺🇦|Ukraine|乌克兰|🇬🇷|Greece|希腊|🇨🇿|Czech|捷克|🇭🇺|Hungary|匈牙利|🇷🇴|Romania|罗马尼亚|🇧🇬|Bulgaria|保加利亚|🇮🇸|Iceland|冰岛|🇭🇷|Croatia|克罗地亚)"
     regs_0299: &reg_other "(?i)(剩余|重置|到期|防失联|官网|导航|客服|http|www)`(?i)(🇸🇬|新加坡|坡|狮城|sg|singapore)`(?i)(🇺🇸|美|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|圣克拉拉|芝加哥|us|unitedstates|united states|america)`(?i)(🇭🇰|港|hk|hongkong|hong kong)`(?i)(🇲🇴|澳门|mo|macao|macau)`(?i)(🇹🇼|台|新北|彰化|tw|taiwan|tai wan)`(?i)(🇯🇵|日|日本|川日|东京|大阪|泉日|埼玉|九州|仙台|沪日|深日|jp|japan|[^-]日)`(?i)(🇰🇷|韩|韓|首尔|kr|kor|Korea)`(?i)(🇪🇺|Europe|欧|🇩🇪|Germany|德|🇬🇧|United Kingdom|英|🇫🇷|France|法|🇳🇱|Netherlands|荷兰|🇷🇺|Russia|俄罗斯|🇪🇸|Spain|西班牙|🇮🇹|Italy|意大利|🇨🇭|Switzerland|瑞士|🇸🇪|Sweden|瑞典|🇹🇷|Turkey|土耳其|🇳🇴|Norway|挪威|🇫🇮|Finland|芬兰|🇩🇰|Denmark|丹麦|🇧🇪|Belgium|比利时|🇮🇪|Ireland|爱尔兰|🇦🇹|Austria|奥地利|🇵🇱|Poland|波兰|🇵🇹|Portugal|葡萄牙|🇺🇦|Ukraine|乌克兰|🇬🇷|Greece|希腊|🇨🇿|Czech|捷克|🇭🇺|Hungary|匈牙利|🇷🇴|Romania|罗马尼亚|🇧🇬|Bulgaria|保加利亚|🇮🇸|Iceland|冰岛|🇭🇷|Croatia|克罗地亚)"
 
+    # clashmi 不支持providers_tags , {providers_tags}
     proxies_01: &proxies_node_selection  [直连, 自动选择, 自动-去高倍率, 手动切换, 省流节点, 高级节点, 负载均衡, 故障转移, 美国节点, 自动-美国, 香港节点, 自动-香港, 澳门节点, 自动-澳门, 台湾节点, 自动-台湾, 狮城节点, 自动-狮城, 日本节点, 自动-日本, 韩国节点, 自动-韩国, 欧洲节点, 其他地区]
     proxies_02: &proxies_manually_select  [直连, 省流节点, 高级节点, 美国节点, 自动-美国, 香港节点, 自动-香港, 澳门节点, 自动-澳门, 台湾节点, 自动-台湾, 狮城节点, 自动-狮城, 日本节点, 自动-日本, 韩国节点, 自动-韩国, 欧洲节点, 其他地区]
     proxies_03: &proxies_unified_management  [直连, 节点选择, 自动选择, 自动-去高倍率, 手动切换, 省流节点, 高级节点, 美国节点, 自动-美国, 香港节点, 自动-香港, 澳门节点, 自动-澳门, 台湾节点, 自动-台湾, 狮城节点, 自动-狮城, 日本节点, 自动-日本, 韩国节点, 自动-韩国, 欧洲节点, 其他地区]
@@ -57,7 +58,7 @@ proxy-groups:
     proxies_05: &proxies_ai  [直连, 节点选择, 境内流量, 境外流量, 自动选择, 自动-去高倍率, 手动切换, 省流节点, 高级节点, 美国节点, 自动-美国, 香港节点, 自动-香港, 澳门节点, 自动-澳门, 台湾节点, 自动-台湾, 狮城节点, 自动-狮城, 日本节点, 自动-日本, 韩国节点, 自动-韩国, 欧洲节点, 其他地区, AI-过滤港澳]
     proxies_06: &proxies_netflix  [直连, 节点选择, 境内流量, 境外流量, 自动选择, 自动-去高倍率, 手动切换, 省流节点, 高级节点, 美国节点, 自动-美国, 香港节点, 自动-香港, 澳门节点, 自动-澳门, 台湾节点, 自动-台湾, 狮城节点, 自动-狮城, 日本节点, 自动-日本, 韩国节点, 自动-韩国, 欧洲节点, 其他地区, 奈飞节点]
 
-    icon_0001: &icon_link "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNzY4MjAwMjk4NTQ2IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjEyNTgzIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik01MTMuNDg0OCA1MDguMDU3Nm0tNDUwLjgxNiAwYTQ1MC44MTYgNDUwLjgxNiAwIDEgMCA5MDEuNjMyIDAgNDUwLjgxNiA0NTAuODE2IDAgMSAwLTkwMS42MzIgMFoiIGZpbGw9IiMzQ0QzOEUiIHAtaWQ9IjEyNTg0Ij48L3BhdGg+PHBhdGggZD0iTTUxNC40MDY0IDE3NC4zODcyYzE4NC40MjI0IDEuMjI4OCAzMzMuNTE2OCAxNTEuMjQ0OCAzMzIuNjQ2NCAzMzQuNjQzMi0wLjg3MDQgMTg0LjIxNzYtMTUxLjI0NDggMzMzLjgyNC0zMzQuNDg5NiAzMzIuOC0xODUuMDg4LTEuMDI0LTMzNC4yODQ4LTE1Mi4wMTI4LTMzMi40OTI4LTMzNi40ODY0IDEuNjg5Ni0xODMuMjk2IDE1Mi4xNjY0LTMzMi4yMzY4IDMzNC4zMzYtMzMwLjk1Njh6TTMwNS43NjY0IDYwNy4yMzJjMi45MTg0IDM5LjkzNiAyMi4xMTg0IDc0LjE4ODggNjIuNjY4OCA5My4wMzA0IDM5LjY4IDE4LjQ4MzIgNzkuNjY3MiAxNS4xMDQgMTEyLjU4ODgtMTMuNjE5MiAzNC42MTEyLTMwLjIwOCA2Ni44NjcyLTYzLjUzOTIgOTcuMzgyNC05Ny45OTY4IDI1LjI0MTYtMjguNDY3MiAyOC4xMDg4LTYzLjUzOTIgMTYuNjkxMi05OS40MzA0LTcuNDI0LTIzLjM5ODQtMjEuNTU1Mi0zMi4zNTg0LTM5Ljk4NzItMjYuNDE5Mi0xNy40NTkyIDUuNTgwOC0yMy4zNDcyIDE5Ljg2NTYtMTYuODQ0OCA0My4wMDggNS40Nzg0IDE5LjUwNzIgNC4wOTYgMzcuNTgwOC0xMC40NDQ4IDUyLjUzMTItMjYuMjE0NCAyNi45ODI0LTUyLjM3NzYgNTQuMDY3Mi03OS43Njk2IDc5Ljc2OTYtMjEuMDk0NCAxOS43NjMyLTUwLjM4MDggMTguNTg1Ni02OC44MTI4LTAuNDA5Ni0xOC45NDQtMTkuNDU2LTE5LjA0NjQtNDkuNDA4IDAuMzA3Mi03MC42NTYgOS4zNjk2LTEwLjI5MTIgMTkuODY1Ni0xOS42MDk2IDI5LjM4ODgtMjkuNzk4NCAxMi4wODMyLTEzLjAwNDggMTIuMDgzMi0zMS4xMjk2IDAuNTEyLTQyLjM5MzYtMTAuOTU2OC0xMC43MDA4LTI4LjU2OTYtMTEuMDA4LTQxLjExMzYgMC41NjMyLTEyLjkwMjQgMTEuOTI5Ni0yNS4zOTUyIDI0LjQyMjQtMzYuOTY2NCAzNy42MzItMTcuNDU5MiAxOS45MTY4LTI1LjM5NTIgNDMuNzc2LTI1LjYgNzQuMTg4OHogbTEyNC44NzY4LTExOS4xOTM2YzAuNDA5NiA0LjA5NiAwLjgxOTIgMTIuMDMyIDIuMTUwNCAxOS43NjMyIDAuOTIxNiA1LjMyNDggMi44MTYgMTAuNTQ3MiA0LjgxMjggMTUuNTY0OCA3LjY4IDE5LjUwNzIgMjMuMTQyNCAyOC4wNTc2IDM5LjUyNjQgMjIuMTY5NiAxNS4xMDQtNS40MjcyIDIxLjk2NDgtMjEuODExMiAxNS45MjMyLTQwLjcwNC03LjQyNC0yMy4yNDQ4LTIuMzA0LTQyLjgwMzIgMTQuNzk2OC01OS44NTI4IDI0LjExNTItMjMuOTYxNiA0Ny43Njk2LTQ4LjMzMjggNzEuOTg3Mi03Mi4xOTIgMjAuODM4NC0yMC40OCA1MC45NDQtMjEuNjU3NiA3MC4zNDg4LTMuMjc2OCAyMC4xMjE2IDE5LjA0NjQgMjAuNjg0OCA0OS42MTI4IDAuNzE2OCA3MS44ODQ4LTguOTA4OCA5LjkzMjgtMTguOTQ0IDE4Ljc5MDQtMjguMDU3NiAyOC41Njk2LTEyLjk1MzYgMTMuODc1Mi0xMy4yNjA4IDMwLjMxMDQtMS40MzM2IDQyLjE4ODggMTIuMzM5MiAxMi4zMzkyIDI4Ljc3NDQgMTMuMTU4NCA0Mi4wODY0IDAuNDA5NiAxMy45Nzc2LTEzLjM2MzIgMjcuOTA0LTI3LjEzNiAzOS44MzM2LTQyLjM0MjQgMzMuMTc3Ni00Mi4yOTEyIDI3LjY5OTItMTA1LjExMzYtMTEuMjY0LTE0Mi40Mzg0LTM5LjU3NzYtMzcuOTM5Mi0xMDEuNjgzMi00MS4zNjk2LTE0Mi40Mzg0LTUuNDc4NC0zMS4zODU2IDI3LjY0OC02MC44MjU2IDU3LjU0ODgtOTAuMDA5NiA4Ny41NTItMTkuNjYwOCAyMC4yNzUyLTI4Ljc3NDQgNDUuODc1Mi0yOC45NzkyIDc4LjE4MjR6IiBmaWxsPSIjRkZGRkZGIiBwLWlkPSIxMjU4NSI+PC9wYXRoPjwvc3ZnPg=="
+    icon_0001: &icon_link "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNzY4MjEyMzA0MTAxIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjQ3NTQ3IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik0zODYuNDk5NzY1IDE4NC40NzA1ODhhOTYuNjE3NDEyIDk2LjYxNzQxMiAwIDEgMCAwIDE5My4yNjQ5NDEgOTYuNjE3NDEyIDk2LjYxNzQxMiAwIDAgMCAwLTE5My4yNjQ5NDF6IG0wIDUyLjcwNTg4M2E0My45MTE1MjkgNDMuOTExNTI5IDAgMSAxIDAgODcuODUzMTc2IDQzLjkxMTUyOSA0My45MTE1MjkgMCAwIDEgMC04Ny44NTMxNzZ6TTQ1Ni43OTQzNTMgNTAwLjcwNTg4MmEyNi4zNTI5NDEgMjYuMzUyOTQxIDAgMCAxIDMuMzEyOTQxIDUyLjQ5NTA1OWwtMy4zMTI5NDEgMC4yMTA4MjRoLTEyMi45NzAzNTNjLTU2LjMyIDAtOTYuNjc3NjQ3IDM5Ljk5NjIzNS05Ni42NDc1MjkgOTYuNjE3NDExIDAgNTQuNjkzNjQ3IDM3LjYxNjk0MSA5My44NDY1ODggOTAuODY0OTQxIDk2LjQ5Njk0Mmw1Ljc4MjU4OCAwLjE1MDU4OGgyNjMuNTI5NDEyYTI2LjM1Mjk0MSAyNi4zNTI5NDEgMCAwIDEgMy4zMTI5NDEgNTIuNDk1MDU5bC0zLjMxMjk0MSAwLjIxMDgyM2gtMjYzLjUyOTQxMmMtODUuMjkzMTc2IDAtMTQ5LjM1MzQxMi02My41MTgxMTgtMTQ5LjM1MzQxMi0xNDkuMzUzNDEyIDAtODMuNTQ2MzUzIDYwLjcxNzE3Ni0xNDUuOTgwMjM1IDE0Mi42MzcxNzctMTQ5LjIwMjgyM2w2LjcxNjIzNS0wLjEyMDQ3MWgxMjIuOTcwMzUzeiIgZmlsbD0iIzJjMmMyYyIgcC1pZD0iNDc1NDgiPjwvcGF0aD48cGF0aCBkPSJNNzIwLjI5MzY0NyAyNTQuNzM1MDU5Yzg1LjMyMzI5NCAwIDE0OS4zODM1MjkgNjMuNTE4MTE4IDE0OS4zNTM0MTIgMTQ5LjM1MzQxMiAwIDgzLjU3NjQ3MS02MC43MTcxNzYgMTQ1Ljk4MDIzNS0xNDIuNjM3MTc3IDE0OS4yMDI4MjNsLTYuNzE2MjM1IDAuMTIwNDcxaC0yNjMuNTI5NDEyYTI2LjM1Mjk0MSAyNi4zNTI5NDEgMCAwIDEtMy4yODI4MjMtNTIuNDk1MDU5bDMuMzEyOTQxLTAuMjEwODI0aDI2My41Mjk0MTJjNTYuMjU5NzY1IDAgOTYuNjE3NDEyLTM5Ljk5NjIzNSA5Ni42MTc0MTEtOTYuNjE3NDExIDAtNTQuNjYzNTI5LTM3LjYxNjk0MS05My44NDY1ODgtOTAuODY0OTQxLTk2LjQ5Njk0MmwtNS43ODI1ODgtMC4xNTA1ODhoLTI2My41Mjk0MTJhMjYuMzUyOTQxIDI2LjM1Mjk0MSAwIDAgMS0zLjMxMjk0MS01Mi40OTUwNTlsMy4zMTI5NDEtMC4yMTA4MjNoMjYzLjUyOTQxMnpNMzE2LjIzNTI5NCAyNTQuNzM1MDU5YTI2LjM1Mjk0MSAyNi4zNTI5NDEgMCAwIDEgMy4zMTI5NDEgNTIuNTI1MTc2bC0zLjMxMjk0MSAwLjE4MDcwNkgyMTAuODIzNTI5YTI2LjM1Mjk0MSAyNi4zNTI5NDEgMCAwIDEtMy4zMTI5NDEtNTIuNDk1MDU5TDIxMC44MjM1MjkgMjU0LjczNTA1OWgxMDUuNDExNzY1ek04NDMuMjk0MTE4IDc0Ni42NzY3MDZhMjYuMzUyOTQxIDI2LjM1Mjk0MSAwIDAgMSAzLjMxMjk0MSA1Mi40OTUwNTlsLTMuMzEyOTQxIDAuMjEwODIzaC0xMDUuNDExNzY1YTI2LjM1Mjk0MSAyNi4zNTI5NDEgMCAwIDEtMy4zMTI5NDEtNTIuNTI1MTc2bDMuMzEyOTQxLTAuMTgwNzA2SDg0My4yOTQxMTh6IiBmaWxsPSIjMmMyYzJjIiBwLWlkPSI0NzU0OSI+PC9wYXRoPjxwYXRoIGQ9Ik02NjcuNjE3ODgyIDY3Ni4zODIxMThhOTYuNjE3NDEyIDk2LjYxNzQxMiAwIDEgMCAwIDE5My4yNjQ5NDEgOTYuNjE3NDEyIDk2LjYxNzQxMiAwIDAgMCAwLTE5My4yNjQ5NDF6IG0wIDUyLjcwNTg4MmE0My45MTE1MjkgNDMuOTExNTI5IDAgMSAxIDAgODcuODUzMTc2IDQzLjkxMTUyOSA0My45MTE1MjkgMCAwIDEgMC04Ny44NTMxNzZ6IiBmaWxsPSIjMmMyYzJjIiBwLWlkPSI0NzU1MCI+PC9wYXRoPjwvc3ZnPg=="
     icon_0002: &icon_reject "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNzY4MjAxOTE1MTU1IiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjIwMzUyIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik0wIDUxMkE1MTIgNTEyIDAgMSAwIDUxMiAwIDUxMy41MTQ2NjcgNTEzLjUxNDY2NyAwIDAgMCAwIDUxMnoiIGZpbGw9IiNGNTUxMEQiIHAtaWQ9IjIwMzUzIj48L3BhdGg+PHBhdGggZD0iTTI2My42OCA3OTguNzJhMzQuOTg2NjY3IDM0Ljk4NjY2NyAwIDAgMS0zNS44NC0zNS44NCA0NS40ODI2NjcgNDUuNDgyNjY3IDAgMCAxIDEwLjI0LTI1LjZsNDk2LjY0LTQ5OS4yYTM2LjI2NjY2NyAzNi4yNjY2NjcgMCAxIDEgNTEuMiA1MS4yTDI4OS4yOCA3ODUuOTJhMzUuNTQxMzMzIDM1LjU0MTMzMyAwIDAgMS0yNS42IDEyLjh6IiBmaWxsPSIjRkZGRkZGIiBwLWlkPSIyMDM1NCI+PC9wYXRoPjxwYXRoIGQ9Ik03NjAuMzIgNzk4LjcyYTQ1LjQ4MjY2NyA0NS40ODI2NjcgMCAwIDEtMjUuNi0xMC4yNGwtNDk2LjY0LTQ5OS4yYTM2LjI2NjY2NyAzNi4yNjY2NjcgMCAxIDEgNTEuMi01MS4ybDQ5OS4yIDQ5OS4yYTM0LjEzMzMzMyAzNC4xMzMzMzMgMCAwIDEgMCA1MS4yIDUzLjY5NiA1My42OTYgMCAwIDEtMjguMTYgMTAuMjR6IiBmaWxsPSIjRkZGRkZGIiBwLWlkPSIyMDM1NSI+PC9wYXRoPjwvc3ZnPg=="
     icon_0003: &icon_pass "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNzY4MjAyMDE5OTMxIiBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjMxNTc5IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiPjxwYXRoIGQ9Ik01MTIgMGE1MTIgNTEyIDAgMSAxIDAgMTAyNEE1MTIgNTEyIDAgMCAxIDUxMiAweiBtMCA2NGE0NDggNDQ4IDAgMSAwIDAgODk2QTQ0OCA0NDggMCAwIDAgNTEyIDY0eiIgZmlsbD0iIzZGQzc3RSIgcC1pZD0iMzE1ODAiPjwvcGF0aD48cGF0aCBkPSJNMjU2LjY0IDQ4MGg0NDAuMzg0YTMyIDMyIDAgMCAxIDUuNzYgNjMuNDg4bC01Ljc2IDAuNTEySDI1Ni42NGEzMiAzMiAwIDAgMS01Ljc2LTYzLjQ4OGw1Ljc2LTAuNTEyeiIgZmlsbD0iIzZGQzc3RSIgcC1pZD0iMzE1ODEiPjwvcGF0aD48cGF0aCBkPSJNNTMzLjc2IDI2Ni42ODhhMzIgMzIgMCAwIDEgNDQuMzUyLTQ1Ljc2bDQuMTYgMy45NjggMTg0LjMyIDIxNC4yNzJhOTYgOTYgMCAwIDEgNS43NiAxMTcuNzZsLTUuNzYgNy40ODgtMTg0LjMyIDIxNC4yNzJhMzIgMzIgMCAwIDEtNTEuODQtMzcuMTJsMy4zMjgtNC42NzIgMTg0LjMyLTIxNC4yMDhhMzIgMzIgMCAwIDAgMy4zMjgtMzYuOTkybC0zLjMyOC00LjgtMTg0LjMyLTIxNC4yMDh6IiBmaWxsPSIjNkZDNzdFIiBwLWlkPSIzMTU4MiI+PC9wYXRoPjwvc3ZnPg=="
 
@@ -113,44 +114,35 @@ proxy-groups:
   - {name: 自动-去高倍率, icon: *icon_auto, type: url-test, lazy: true, interval: 1800, tolerance: 50, include-all: true, hidden: true, exclude-filter: *reg_high-rate}
   - {name: 负载均衡, icon: *icon_load_balance, type: load-balance, interval: 1800, include-all: true, hidden: true, exclude-filter: *reg_invalid_node}
   - {name: 故障转移, icon: *icon_fallback, type: fallback, interval: 1800, include-all: true, hidden: true, exclude-filter: *reg_invalid_node}
-  
+
   - {name: 广告拦截, icon: *icon_noads, type: select, proxies: [拦截, 放行]}
-  - {name: 漏网之鱼, icon: *icon_fish, type: select, proxies: *proxies_standard}
 
-  - {name: 国内流量, icon: *icon_domestic_ip, type: select, proxies: *proxies_standard}
-  - {name: 直连软件, icon: *icon_domestic_app, type: select, proxies: *proxies_standard}
-  - {name: 国服游戏, icon: *icon_wegame, type: select, proxies: *proxies_standard}
-  - {name: Steam平台, icon: *icon_steam, type: select, proxies: *proxies_standard}
-  - {name: 微软服务, icon: *icon_microsoft, type: select, proxies: *proxies_standard}
-  - {name: 苹果服务, icon: *icon_apple, type: select, proxies: *proxies_standard}
-
-  - {name: 谷歌服务, icon: *icon_google, type: select, proxies: *proxies_standard}
-  - {name: 电报消息, icon: *icon_telegram, type: select, proxies: *proxies_standard}
-  - {name: 谷歌推送, icon: *icon_google_play, type: select, proxies: *proxies_standard}
-
-  - {name: 外服游戏, icon: *icon_rockstar, type: select, proxies: *proxies_standard}
-  - {name: AI 平台, icon: *icon_ai, type: select, include-all: true, proxies: *proxies_ai, exclude-filter: *reg_invalid_node}
+  - {name: 电报消息, icon: *icon_telegram, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: AI平台, icon: *icon_ai, type: select, include-all: true, proxies: *proxies_ai, exclude-filter: *reg_invalid_node}
   - {name: AI-过滤港澳, icon: *icon_ai, type: url-test, lazy: true, interval: 3600, tolerance: 50, include-all: true, exclude-filter: *reg_ai, hidden: true}
-  - {name: 奈飞视频, icon: *icon_netflix, type: select, include-all: true, proxies: *proxies_netflix, exclude-filter: *reg_invalid_node}
+  - {name: Netflix, icon: *icon_netflix, type: select, include-all: true, proxies: *proxies_netflix, exclude-filter: *reg_invalid_node}
   - {name: 奈飞节点, icon: *icon_netflix, type: url-test, lazy: true, interval: 1800, tolerance: 50, include-all: true, filter: *reg_netflix, hidden: true}
-  - {name: 油管视频, icon: *icon_youtube, type: select, proxies: *proxies_standard}
-  - {name: 国际媒体, icon: *icon_twitch, type: select, proxies: *proxies_standard}
-  - {name: 国际流量, icon: *icon_overseas_ip, type: select, proxies: *proxies_standard}
 
-  - {name: BT 下载, icon: *icon_bt, type: select, include-all: true, exclude-filter: *reg_invalid_node, proxies: *proxies_standard}
+  - {name: 境内IP, icon: *icon_domestic_ip, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: 境外IP, icon: *icon_overseas_ip, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: 境内软件, icon: *icon_domestic_app, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: Steam, icon: *icon_steam, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: 境内游戏, icon: *icon_wegame, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: 境外游戏, icon: *icon_rockstar, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: Microsoft, icon: *icon_microsoft, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: Google, icon: *icon_google, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: Apple, icon: *icon_apple, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: Google FCM, icon: *icon_google_play, type: select, include-all: true, proxies: *proxies_standard}
+  - {name: BT下载, icon: *icon_bt, type: select, include-all: true, exclude-filter: *reg_invalid_node, proxies: *proxies_standard}
+  - {name: Youtube, icon: *icon_youtube, type: select, include-all: true, proxies: *proxies_standard}
   - {name: 网络测速, icon: *icon_speed, type: select, include-all: true, exclude-filter: *reg_invalid_node, proxies: *proxies_standard}
+  - {name: 境外媒体, icon: *icon_twitch, type: select, include-all: true, proxies: *proxies_standard}
 
   - {name: 私有网络, type: select, proxies: [DIRECT], hidden: true}
   - {name: 拦截, icon: *icon_reject, type: select, proxies: [REJECT], hidden: true}
   - {name: 放行, icon: *icon_pass, type: select, proxies: [PASS], hidden: true}
   - {name: 直连, icon: *icon_link, type: select, proxies: [DIRECT], hidden: true}
 
-  - {name: 高级节点, icon: *icon_senior, type: select, include-all: true, proxies: [直连, 自动-高级节点], filter: *reg_senior}
-  - {name: 省流节点, icon: *icon_lower, type: select, include-all: true, proxies: [直连, 自动-省流节点], filter: *reg_lower}
-
-  - {name: 自动-高级节点, icon: *icon_senior, type: url-test, lazy: true, interval: 1800, tolerance: 50, include-all: true, hidden: true, filter: *reg_senior}
-  - {name: 自动-省流节点, icon: *icon_lower, type: url-test, lazy: true, interval: 1800, tolerance: 50, include-all: true, hidden: true, filter: *reg_lower}
-  
   - {name: 美国节点, icon: *icon_us, type: select, include-all: true, proxies: [直连, 自动-美国], filter: *reg_us, exclude-filter: *reg_us_ex}
   - {name: 香港节点, icon: *icon_hk, type: select, include-all: true, proxies: [直连, 自动-香港], filter: *reg_hk}
   - {name: 澳门节点, icon: *icon_mo, type: select, include-all: true, proxies: [直连, 自动-澳门], filter: *reg_mo}
@@ -169,6 +161,13 @@ proxy-groups:
   - {name: 自动-日本, icon: *icon_jp, type: url-test, lazy: true, tolerance: 50, include-all: true, hidden: true, filter: *reg_jp, exclude-filter: *reg_jp_ex}
   - {name: 自动-韩国, icon: *icon_kr, type: url-test, lazy: true, tolerance: 50, include-all: true, hidden: true, filter: *reg_kr}
   - {name: 自动-欧洲, icon: *icon_eu, type: url-test, lazy: true, tolerance: 50, include-all: true, hidden: true, filter: *reg_eu}
+  
+  - {name: 漏网之鱼, icon: *icon_fish, type: select, proxies: *proxies_standard}
+  - {name: 高级节点, icon: *icon_senior, type: select, include-all: true, proxies: [直连, 自动-高级节点], filter: *reg_senior}
+  - {name: 省流节点, icon: *icon_lower, type: select, include-all: true, proxies: [直连, 自动-省流节点], filter: *reg_lower}
+  - {name: 自动-高级节点, icon: *icon_senior, type: url-test, lazy: true, interval: 1800, tolerance: 50, include-all: true, hidden: true, filter: *reg_senior}
+  - {name: 自动-省流节点, icon: *icon_lower, type: url-test, lazy: true, interval: 1800, tolerance: 50, include-all: true, hidden: true, filter: *reg_lower}
+
 
 #规则提供者（更新mrs格式）
 rule-providers:
@@ -345,25 +344,25 @@ rules:
   - RULE-SET,ads,广告拦截
 
   - RULE-SET,networktest,网络测速
-  - RULE-SET,applications,直连软件
-  - RULE-SET,trackerslist,BT 下载
-  - RULE-SET,apple-cn,苹果服务
-  - RULE-SET,microsoft-cn,微软服务
-  - RULE-SET,google-cn,谷歌服务
-  - RULE-SET,steamcn,Steam平台
-  - RULE-SET,games-cn,国服游戏
+  - RULE-SET,applications,境内软件
+  - RULE-SET,trackerslist,BT下载
+  - RULE-SET,apple-cn,Apple
+  - RULE-SET,microsoft-cn,Microsoft
+  - RULE-SET,google-cn,Google
+  - RULE-SET,steamcn,Steam
+  - RULE-SET,games-cn,境内游戏
 
-  - RULE-SET,googlefcm,谷歌推送
-  - RULE-SET,netflix,奈飞视频
-  - RULE-SET,youtube,油管视频
-  - RULE-SET,ai,AI 平台
-  - RULE-SET,media,国际媒体
-  - RULE-SET,games,外服游戏
+  - RULE-SET,googlefcm,Google FCM
+  - RULE-SET,netflix,Netflix
+  - RULE-SET,youtube,Youtube
+  - RULE-SET,ai,AI平台
+  - RULE-SET,media,境外媒体
+  - RULE-SET,games,境外游戏
 
-  - RULE-SET,proxy,国际流量
-  - RULE-SET,cn,国内流量
-  - RULE-SET,gamesip,外服游戏
-  - RULE-SET,mediaip,国际媒体
-  - RULE-SET,cnip,国内流量
+  - RULE-SET,proxy,境外IP
+  - RULE-SET,cn,境内IP
+  - RULE-SET,gamesip,境外游戏
+  - RULE-SET,mediaip,境外媒体
+  - RULE-SET,cnip,境内IP
 
   - MATCH,漏网之鱼
