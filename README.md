@@ -8,7 +8,8 @@ ShellCrash自定义在线配置规则模版
 ```
 cd /data/ShellCrash/ui/
 sed -i "s/127.0.0.1/192.168.2.1/g" ./assets/*.js
-sed -i "s/9090/$9999/g" ./assets/*.js
+sed -i "s/9090/9999/g" ./assets/*.js
+sed -i "s/127.0.0.1:9090/192.168.2.1:9999/g" /data/ShellCrash/ui/*.html
 ```
 
 # 6-3使用方法
