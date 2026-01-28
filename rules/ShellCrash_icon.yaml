@@ -1,0 +1,447 @@
+#ShellCrash-ruleset 全分组规则+去广告 For mihomo By Maozai 260109
+
+#此版本为Maozai根据ACL4SSR规则修改优化而来，尽量在保持原有的基础上进行优化。
+#数据源采用了DustinWin/ruleset_geodata和MetaCubeX/meta-rules-dat两个开源项目的规则，感谢原作者的辛勤付出。
+
+#请在充分理解代码其原理及可能产生的副作用后再进行修改，否则可能导致功能异常
+#参考资料：https://wiki.metacubex.one/config/ & https://sing-box.sagernet.org/zh/configuration/
+
+# proxy-providers:
+#   poxy_1::
+#     type: http
+#     url: ""
+#     path: "./providers/poxy_1.yaml"
+#     interval: 43200
+#     health-check:
+#       enable: true
+#       lazy: true
+#       url: "https://www.gstatic.com/generate_204"
+#       interval: 600
+#     override:
+#       udp: true
+#       skip-cert-verify: true
+#   poxy_2:
+#     type: http
+#     url: ""
+#     path: "./providers/poxy_1.yaml"
+#     interval: 43200
+#     health-check:
+#       enable: true
+#       lazy: true
+#       url: "https://www.gstatic.com/generate_204"
+#       interval: 600
+#     override:
+#       udp: true
+#       skip-cert-verify: true
+
+#代理组
+proxy-groups:
+
+  #加载锚点
+  - name: 加载锚点
+    type: select
+    hidden: true
+    proxies: [DIRECT]
+
+    icon_list:
+      - &icon_link "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/link.svg"
+      - &icon_reject "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/reject.svg"
+      - &icon_pass "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/pass.svg"
+
+      - &icon_choose "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/choose.svg"
+      - &icon_manually "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/manually.svg"
+      - &icon_domestic "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/domestic.svg"
+      - &icon_overseas "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/overseas.svg"
+      - &icon_auto "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/auto.svg"
+      - &icon_load_balance "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/load_balance.svg"
+      - &icon_fallback "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/fallback.svg"
+      - &icon_noads "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/noads.svg"
+      - &icon_fish "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/fish.svg"
+
+      - &icon_domestic_ip "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/domestic_ip.svg"
+      - &icon_overseas_ip "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/overseas_ip.svg"
+      - &icon_domestic_app "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/domestic_app.svg"
+      - &icon_bt "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/bt.svg"
+      - &icon_speed "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/speed.svg"
+      - &icon_senior "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/senior.svg"
+      - &icon_lower "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/lower.svg"
+
+      - &icon_chatgpt "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/chatgpt.svg"
+      - &icon_steam "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/steam.svg"
+      - &icon_microsoft "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/microsoft.svg"
+      - &icon_apple "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/apple.svg"
+      - &icon_google "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/google.svg"
+      - &icon_txgames "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/txgames.svg"
+      - &icon_telegram "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/telegram.svg" 
+      - &icon_google_play "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/google_play.svg"
+      - &icon_nintendo "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/nintendo.svg"
+      - &icon_netflix "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/netflix.svg"
+      - &icon_youtube "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/youtube.svg"
+      - &icon_twitch "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/twitch.svg"
+      - &icon_bilibili "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/bilibili.svg"
+      - &icon_tiktok "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/app/tiktok.svg"
+
+      - &icon_us "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/us.svg"
+      - &icon_hk "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/hk.svg"
+      - &icon_mo "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/mo.svg"
+      - &icon_tw "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/tw.svg"
+      - &icon_sg "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/sg.svg"
+      - &icon_jp "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/jp.svg"
+      - &icon_kr "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/kr.svg"
+      - &icon_eu "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/eu.svg"
+      - &icon_un "https://github.com/tw3nty-1/ShellCrash-custom-rules/raw/main/ui/icon/flag/un.svg"
+
+    reg_list:
+      - &reg_invalid_node "(?i)(剩余|重置|到期|过期|更新|订阅|防失联|官网|导航|客服|http|www)"
+      - &reg_high-rate "(?i)(剩余|重置|到期|过期|更新|订阅|防失联|官网|导航|客服|http|www)`(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})|([2-9]|\\d{2,})x)"
+      - &reg_ai "(?i)(剩余|重置|到期|过期|更新|订阅|防失联|官网|导航|客服|http|www)`(?i)(🇭🇰|港|hk|hongkong|hong kong)`(?i)(🇲🇴|澳门|mo|macao|macau)"
+      - &reg_netflix "(?i)(NF|奈飞|解锁|Netflix|NETFLIX|Media)"
+      - &reg_senior "(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})|([2-9]|\\d{2,})x)"
+      - &reg_lower "(?i)(0\\.[0-9]|低倍率|省流|大流量|公益|免费|闲时|Low)"
+
+      - &reg_us "(?i)(🇺🇸|美|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|圣克拉拉|芝加哥|us|unitedstates|united states|america)"
+      - &reg_us_ex "(?i)(南美|中美|拉美|亚美尼亚|美属)"
+      - &reg_us_ex2 "(?i)(南美|中美|拉美|亚美尼亚|美属)`(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})|([2-9]|\\d{2,})x)"
+      - &reg_hk "(?i)(🇭🇰|港|hk|hongkong|hong kong)"
+      - &reg_mo "(?i)(🇲🇴|澳门|mo|macao|macau)"
+      - &reg_tw "(?i)(🇹🇼|台|新北|彰化|tw|taiwan|tai wan)"
+      - &reg_tw_ex "(?i)(仙台)"
+      - &reg_tw_ex2 "(?i)(仙台)`(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})|([2-9]|\\d{2,})x)"
+      - &reg_jp "(?i)(🇯🇵|日|日本|川日|东京|大阪|泉日|埼玉|九州|仙台|沪日|深日|jp|japan|[^-]日)"
+      - &reg_jp_ex "(?i)(尼日利亚|尼日尔|日内瓦)"
+      - &reg_jp_ex2 "(?i)(尼日利亚|尼日尔|日内瓦)`(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})|([2-9]|\\d{2,})x)"
+      - &reg_sg "(?i)(🇸🇬|新加坡|坡|狮城|sg|singapore)"
+      - &reg_kr "(?i)(🇰🇷|韩|韓|首尔|kr|kor|Korea)"
+      - &reg_eu  "(?i)(🇪🇺|Europe|欧|🇩🇪|Germany|德|🇬🇧|United Kingdom|英|🇫🇷|France|法|🇳🇱|Netherlands|荷兰|🇷🇺|Russia|俄罗斯|🇪🇸|Spain|西班牙|🇮🇹|Italy|意大利|🇨🇭|Switzerland|瑞士|🇸🇪|Sweden|瑞典|🇹🇷|Turkey|土耳其|🇳🇴|Norway|挪威|🇫🇮|Finland|芬兰|🇩🇰|Denmark|丹麦|🇧🇪|Belgium|比利时|🇮🇪|Ireland|爱尔兰|🇦🇹|Austria|奥地利|🇵🇱|Poland|波兰|🇵🇹|Portugal|葡萄牙|🇺🇦|Ukraine|乌克兰|🇬🇷|Greece|希腊|🇨🇿|Czech|捷克|🇭🇺|Hungary|匈牙利|🇷🇴|Romania|罗马尼亚|🇧🇬|Bulgaria|保加利亚|🇮🇸|Iceland|冰岛|🇭🇷|Croatia|克罗地亚)"
+      - &reg_other "(?i)(剩余|重置|到期|过期|更新|订阅|防失联|官网|导航|客服|http|www)`(?i)(🇸🇬|新加坡|坡|狮城|sg|singapore)`(?i)(🇺🇸|美|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|圣克拉拉|芝加哥|us|unitedstates|united states|america)`(?i)(🇭🇰|港|hk|hongkong|hong kong)`(?i)(🇲🇴|澳门|mo|macao|macau)`(?i)(🇹🇼|台|新北|彰化|tw|taiwan|tai wan)`(?i)(🇯🇵|日|日本|川日|东京|大阪|泉日|埼玉|九州|仙台|沪日|深日|jp|japan|[^-]日)`(?i)(🇰🇷|韩|韓|首尔|kr|kor|Korea)`(?i)(🇪🇺|Europe|欧|🇩🇪|Germany|德|🇬🇧|United Kingdom|英|🇫🇷|France|法|🇳🇱|Netherlands|荷兰|🇷🇺|Russia|俄罗斯|🇪🇸|Spain|西班牙|🇮🇹|Italy|意大利|🇨🇭|Switzerland|瑞士|🇸🇪|Sweden|瑞典|🇹🇷|Turkey|土耳其|🇳🇴|Norway|挪威|🇫🇮|Finland|芬兰|🇩🇰|Denmark|丹麦|🇧🇪|Belgium|比利时|🇮🇪|Ireland|爱尔兰|🇦🇹|Austria|奥地利|🇵🇱|Poland|波兰|🇵🇹|Portugal|葡萄牙|🇺🇦|Ukraine|乌克兰|🇬🇷|Greece|希腊|🇨🇿|Czech|捷克|🇭🇺|Hungary|匈牙利|🇷🇴|Romania|罗马尼亚|🇧🇬|Bulgaria|保加利亚|🇮🇸|Iceland|冰岛|🇭🇷|Croatia|克罗地亚)"
+      - &reg_other2 "(?i)(剩余|重置|到期|过期|更新|订阅|防失联|官网|导航|客服|http|www)`(?i)(专线|专用|高级|直连|急速|高速|高倍率|游戏|铂金|钻石|企业|VIP|Ultra|Game|IEPL|IPLC|AIA|BGP|GIA|CN2|CMI|HGC|HKT|CTM|CC|AC|x([2-9]|\\d{2,})|([2-9]|\\d{2,})x)`(?i)(🇸🇬|新加坡|坡|狮城|sg|singapore)`(?i)(🇺🇸|美|洛杉矶|圣何塞|西雅图|纽约|波特兰|旧金山|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|圣克拉拉|芝加哥|us|unitedstates|united states|america)`(?i)(🇭🇰|港|hk|hongkong|hong kong)`(?i)(🇲🇴|澳门|mo|macao|macau)`(?i)(🇹🇼|台|新北|彰化|tw|taiwan|tai wan)`(?i)(🇯🇵|日|日本|川日|东京|大阪|泉日|埼玉|九州|仙台|沪日|深日|jp|japan|[^-]日)`(?i)(🇰🇷|韩|韓|首尔|kr|kor|Korea)`(?i)(🇪🇺|Europe|欧|🇩🇪|Germany|德|🇬🇧|United Kingdom|英|🇫🇷|France|法|🇳🇱|Netherlands|荷兰|🇷🇺|Russia|俄罗斯|🇪🇸|Spain|西班牙|🇮🇹|Italy|意大利|🇨🇭|Switzerland|瑞士|🇸🇪|Sweden|瑞典|🇹🇷|Turkey|土耳其|🇳🇴|Norway|挪威|🇫🇮|Finland|芬兰|🇩🇰|Denmark|丹麦|🇧🇪|Belgium|比利时|🇮🇪|Ireland|爱尔兰|🇦🇹|Austria|奥地利|🇵🇱|Poland|波兰|🇵🇹|Portugal|葡萄牙|🇺🇦|Ukraine|乌克兰|🇬🇷|Greece|希腊|🇨🇿|Czech|捷克|🇭🇺|Hungary|匈牙利|🇷🇴|Romania|罗马尼亚|🇧🇬|Bulgaria|保加利亚|🇮🇸|Iceland|冰岛|🇭🇷|Croatia|克罗地亚)"
+
+    proxy_type_list:
+      - &proxy_select_all {type: select, include-all: true, lazy: true}
+      - &proxy_url_test_fast {type: url-test, lazy: true, interval: 300, tolerance: 50, include-all: true, hidden: true}
+      - &proxy_url_test_stable {type: url-test, lazy: true, interval: 300, tolerance: 200, include-all: true, hidden: true}
+      - &proxy_fallback {type: fallback, lazy: true, interval: 300, include-all: true, hidden: true}
+      - &proxy_load_balance {type: load-balance, lazy: true, interval: 300, include-all: true, hidden: true}
+    
+    proxy_proxies_list:
+      #{providers_tags}
+      - &proxies_node_selection [直连, 手动切换, AutoFAST, AutoSTND, AutoSTND*, 故障转移, 负载均衡, 省流节点, 高级节点, 美国节点, 美国FAST, 美国STND, 美国STND*, 香港节点, 香港FAST, 香港STND, 香港STND*, 澳门节点, 澳门FAST, 澳门STND, 澳门STND*, 台湾节点, 台湾FAST, 台湾STND, 台湾STND*, 狮城节点, 狮城FAST, 狮城STND, 狮城STND*, 日本节点, 日本FAST, 日本STND, 日本STND*, 韩国节点, 韩国FAST, 韩国STND, 韩国STND*, 欧洲节点, 欧洲FAST, 欧洲STND, 欧洲STND*, 其他地区, 其他FAST, 其他STND, 其他STND*, {providers_tags}]
+      - &proxies_manually_select [直连, 省流节点, 高级节点, 美国节点, 美国FAST, 美国STND, 美国STND*, 香港节点, 香港FAST, 香港STND, 香港STND*, 澳门节点, 澳门FAST, 澳门STND, 澳门STND*, 台湾节点, 台湾FAST, 台湾STND, 台湾STND*, 狮城节点, 狮城FAST, 狮城STND, 狮城STND*, 日本节点, 日本FAST, 日本STND, 日本STND*, 韩国节点, 韩国FAST, 韩国STND, 韩国STND*, 欧洲节点, 欧洲FAST, 欧洲STND, 欧洲STND*, 其他地区, 其他FAST, 其他STND, 其他STND*, {providers_tags}]
+      - &proxies_unified_management [直连, 节点选择, AutoFAST, AutoSTND, AutoSTND*, 故障转移, 负载均衡, 手动切换, 省流节点, 高级节点, 美国节点, 美国FAST, 美国STND, 美国STND*, 香港节点, 香港FAST, 香港STND, 香港STND*, 澳门节点, 澳门FAST, 澳门STND, 澳门STND*, 台湾节点, 台湾FAST, 台湾STND, 台湾STND*, 狮城节点, 狮城FAST, 狮城STND, 狮城STND*, 日本节点, 日本FAST, 日本STND, 日本STND*, 韩国节点, 韩国FAST, 韩国STND, 韩国STND*, 欧洲节点, 欧洲FAST, 欧洲STND, 欧洲STND*, 其他地区, 其他FAST, 其他STND, 其他STND*, {providers_tags}]
+      - &proxies_standard [直连, 节点选择, 境内流量, 境外流量, AutoFAST, AutoSTND, AutoSTND*, 故障转移, 负载均衡, 手动切换, 省流节点, 高级节点, 美国节点, 美国FAST, 美国STND, 美国STND*, 香港节点, 香港FAST, 香港STND, 香港STND*, 澳门节点, 澳门FAST, 澳门STND, 澳门STND*, 台湾节点, 台湾FAST, 台湾STND, 台湾STND*, 狮城节点, 狮城FAST, 狮城STND, 狮城STND*, 日本节点, 日本FAST, 日本STND, 日本STND*, 韩国节点, 韩国FAST, 韩国STND, 韩国STND*, 欧洲节点, 欧洲FAST, 欧洲STND, 欧洲STND*, 其他地区, 其他FAST, 其他STND, 其他STND*, {providers_tags}]
+      - &proxies_ai  [直连, 节点选择, 境内流量, 境外流量, AutoFAST, AutoSTND, AutoSTND*, 故障转移, 负载均衡, 手动切换, 省流节点, 高级节点, 美国节点, 美国FAST, 美国STND, 美国STND*, 香港节点, 香港FAST, 香港STND, 香港STND*, 澳门节点, 澳门FAST, 澳门STND, 澳门STND*, 台湾节点, 台湾FAST, 台湾STND, 台湾STND*, 狮城节点, 狮城FAST, 狮城STND, 狮城STND*, 日本节点, 日本FAST, 日本STND, 日本STND*, 韩国节点, 韩国FAST, 韩国STND, 韩国STND*, 欧洲节点, 欧洲FAST, 欧洲STND, 欧洲STND*, 其他地区, 其他FAST, 其他STND, 其他STND*, AI-FAST, AI-STND, {providers_tags}]
+      - &proxies_netflix  [直连, 节点选择, 境内流量, 境外流量, AutoFAST, AutoSTND, AutoSTND*, 故障转移, 负载均衡, 手动切换, 省流节点, 高级节点, 美国节点, 美国FAST, 美国STND, 美国STND*, 香港节点, 香港FAST, 香港STND, 香港STND*, 澳门节点, 澳门FAST, 澳门STND, 澳门STND*, 台湾节点, 台湾FAST, 台湾STND, 台湾STND*, 狮城节点, 狮城FAST, 狮城STND, 狮城STND*, 日本节点, 日本FAST, 日本STND, 日本STND*, 韩国节点, 韩国FAST, 韩国STND, 韩国STND*, 欧洲节点, 欧洲FAST, 欧洲STND, 欧洲STND*, 其他地区, 其他FAST, 其他STND, 其他STND*, NetflixFAST, NetflixSTND, NetflixSTND*, {providers_tags}]
+      - &proxies_area [美国节点, 美国FAST, 美国STND, 美国STND*, 香港节点, 香港FAST, 香港STND, 香港STND*, 澳门节点, 澳门FAST, 澳门STND, 澳门STND*, 台湾节点, 台湾FAST, 台湾STND, 台湾STND*, 狮城节点, 狮城FAST, 狮城STND, 狮城STND*, 日本节点, 日本FAST, 日本STND, 日本STND*, 韩国节点, 韩国FAST, 韩国STND, 韩国STND*, 欧洲节点, 欧洲FAST, 欧洲STND, 欧洲STND*, 其他地区, 其他FAST, 其他STND, 其他STND*]
+        
+  #加载锚点结束
+
+  - {name: 私有网络, type: select, hidden: true, proxies: [DIRECT]}
+  - {name: 拦截, type: select, icon: *icon_reject, hidden: true, proxies: [REJECT]}
+  - {name: 放行, type: select, icon: *icon_pass, hidden: true, proxies: [PASS]}
+  - {name: 直连, type: select, icon: *icon_link, hidden: true, proxies: [DIRECT]}
+
+  - {name: 节点选择, <<: *proxy_select_all, icon: *icon_choose, proxies: *proxies_node_selection, exclude-filter: *reg_invalid_node}
+  - {name: 手动切换, <<: *proxy_select_all, icon: *icon_manually, proxies: *proxies_manually_select, exclude-filter: *reg_invalid_node}
+  - {name: AutoFAST, <<: *proxy_url_test_fast, icon: *icon_auto, exclude-filter: *reg_invalid_node}
+  - {name: AutoSTND, <<: *proxy_url_test_stable, icon: *icon_auto, exclude-filter: *reg_invalid_node}
+  - {name: AutoSTND*, <<: *proxy_url_test_stable, icon: *icon_auto, exclude-filter: *reg_high-rate}
+  - {name: 故障转移, <<: *proxy_fallback, icon: *icon_fallback, exclude-filter: *reg_invalid_node}
+  - {name: 负载均衡, <<: *proxy_load_balance, icon: *icon_load_balance, exclude-filter: *reg_invalid_node}
+  - {name: 境内流量, <<: *proxy_select_all, icon: *icon_domestic, proxies: *proxies_unified_management, exclude-filter: *reg_invalid_node}
+  - {name: 境外流量, <<: *proxy_select_all, icon: *icon_overseas, proxies: *proxies_unified_management, exclude-filter: *reg_invalid_node}
+  
+
+  - {name: 广告拦截, type: select, icon: *icon_noads, proxies: [拦截, 放行]}
+  - {name: Telegram, <<: *proxy_select_all, icon: *icon_telegram, proxies: *proxies_standard}
+  - {name: AI平台, <<: *proxy_select_all, icon: *icon_chatgpt, proxies: *proxies_ai, exclude-filter: *reg_invalid_node}
+  - {name: AI-FAST, <<: *proxy_url_test_fast, icon: *icon_chatgpt, exclude-filter: *reg_ai}
+  - {name: AI-STND, <<: *proxy_url_test_stable, icon: *icon_chatgpt, exclude-filter: *reg_ai}
+  - {name: Netflix, <<: *proxy_select_all, icon: *icon_netflix, proxies: *proxies_netflix, exclude-filter: *reg_invalid_node}
+  - {name: NetflixFAST, <<: *proxy_url_test_fast, icon: *icon_netflix, filter: *reg_netflix}
+  - {name: NetflixSTND, <<: *proxy_url_test_stable, icon: *icon_netflix, filter: *reg_netflix}
+  - {name: NetflixSTND*, <<: *proxy_url_test_stable, icon: *icon_netflix, filter: *reg_netflix, exclude-filter: *reg_high-rate}
+  - {name: 境内IP, <<: *proxy_select_all, icon: *icon_domestic_ip, proxies: *proxies_standard}
+  - {name: 境外IP, <<: *proxy_select_all, icon: *icon_overseas_ip, proxies: *proxies_standard}
+  - {name: 境内游戏, <<: *proxy_select_all, icon: *icon_txgames, proxies: *proxies_standard}
+  - {name: 境外游戏, <<: *proxy_select_all, icon: *icon_nintendo, proxies: *proxies_standard}
+  - {name: 境内软件, <<: *proxy_select_all, icon: *icon_domestic_app, proxies: *proxies_standard}
+  - {name: 境外媒体, <<: *proxy_select_all, icon: *icon_twitch, proxies: *proxies_standard}
+  - {name: Microsoft, <<: *proxy_select_all, icon: *icon_microsoft, proxies: *proxies_standard}
+  - {name: Google, <<: *proxy_select_all, icon: *icon_google, proxies: *proxies_standard}
+  - {name: Apple, <<: *proxy_select_all, icon: *icon_apple, proxies: *proxies_standard}
+  - {name: Google FCM, <<: *proxy_select_all, icon: *icon_google_play, proxies: *proxies_standard}
+  - {name: BiliBili, <<: *proxy_select_all, icon: *icon_bilibili, proxies: *proxies_standard}
+  - {name: Youtube, <<: *proxy_select_all, icon: *icon_youtube, proxies: *proxies_standard}
+  - {name: Steam, <<: *proxy_select_all, icon: *icon_steam, proxies: *proxies_standard}
+  - {name: TikTok, <<: *proxy_select_all, icon: *icon_tiktok, proxies: *proxies_standard}
+  - {name: BT下载, <<: *proxy_select_all, icon: *icon_bt, proxies: *proxies_standard, exclude-filter: *reg_invalid_node}
+  - {name: 漏网之鱼, <<: *proxy_select_all, icon: *icon_fish, proxies: *proxies_standard}
+  - {name: 网络测速, <<: *proxy_select_all, icon: *icon_speed, proxies: *proxies_standard, exclude-filter: *reg_invalid_node}
+
+  - {name: 美国节点, <<: *proxy_select_all, icon: *icon_us, proxies: [直连, 美国FAST, 美国STND, 美国STND*], filter: *reg_us, exclude-filter: *reg_us_ex}
+  - {name: 香港节点, <<: *proxy_select_all, icon: *icon_hk, proxies: [直连, 香港FAST, 香港STND, 香港STND*], filter: *reg_hk}
+  - {name: 澳门节点, <<: *proxy_select_all, icon: *icon_mo, proxies: [直连, 澳门FAST, 澳门STND, 澳门STND*], filter: *reg_mo}
+  - {name: 台湾节点, <<: *proxy_select_all, icon: *icon_tw, proxies: [直连, 台湾FAST, 台湾STND, 台湾STND*], filter: *reg_tw, exclude-filter: *reg_tw_ex}
+  - {name: 狮城节点, <<: *proxy_select_all, icon: *icon_sg, proxies: [直连, 狮城FAST, 狮城STND, 狮城STND*], filter: *reg_sg}
+  - {name: 日本节点, <<: *proxy_select_all, icon: *icon_jp, proxies: [直连, 日本FAST, 日本STND, 日本STND*], filter: *reg_jp, exclude-filter: *reg_jp_ex}
+  - {name: 韩国节点, <<: *proxy_select_all, icon: *icon_kr, proxies: [直连, 韩国FAST, 韩国STND, 韩国STND*], filter: *reg_kr}
+  - {name: 欧洲节点, <<: *proxy_select_all, icon: *icon_eu, proxies: [直连, 欧洲FAST, 欧洲STND, 欧洲STND*], filter: *reg_eu}
+  - {name: 其他地区, <<: *proxy_select_all, icon: *icon_un, proxies: [直连, 其他FAST, 其他STND, 其他STND*], exclude-filter: *reg_other}
+
+  - {name: 美国FAST, <<: *proxy_url_test_fast, icon: *icon_us, filter: *reg_us, exclude-filter: *reg_us_ex}
+  - {name: 美国STND, <<: *proxy_url_test_stable, icon: *icon_us, filter: *reg_us, exclude-filter: *reg_us_ex}
+  - {name: 美国STND*, <<: *proxy_url_test_stable, icon: *icon_us, filter: *reg_us, exclude-filter: *reg_us_ex2}
+  
+
+  - {name: 香港FAST, <<: *proxy_url_test_fast, icon: *icon_hk, filter: *reg_hk }
+  - {name: 香港STND, <<: *proxy_url_test_stable, icon: *icon_hk, filter: *reg_hk }
+  - {name: 香港STND*, <<: *proxy_url_test_stable, icon: *icon_hk, filter: *reg_hk, exclude-filter: *reg_high-rate}
+
+  - {name: 澳门FAST, <<: *proxy_url_test_fast, icon: *icon_mo, filter: *reg_mo }
+  - {name: 澳门STND, <<: *proxy_url_test_stable, icon: *icon_mo, filter: *reg_mo }
+  - {name: 澳门STND*, <<: *proxy_url_test_stable, icon: *icon_mo, filter: *reg_mo, exclude-filter: *reg_high-rate}
+
+  - {name: 台湾FAST, <<: *proxy_url_test_fast, icon: *icon_tw, filter: *reg_tw, exclude-filter: *reg_tw_ex}
+  - {name: 台湾STND, <<: *proxy_url_test_stable, icon: *icon_tw, filter: *reg_tw, exclude-filter: *reg_tw_ex}
+  - {name: 台湾STND*, <<: *proxy_url_test_stable, icon: *icon_tw, filter: *reg_tw, exclude-filter: *reg_tw_ex2}
+
+  - {name: 狮城FAST, <<: *proxy_url_test_fast, icon: *icon_sg, filter: *reg_sg }
+  - {name: 狮城STND, <<: *proxy_url_test_stable, icon: *icon_sg, filter: *reg_sg }
+  - {name: 狮城STND*, <<: *proxy_url_test_stable, icon: *icon_sg, filter: *reg_sg, exclude-filter: *reg_jp_ex2}
+
+  - {name: 日本FAST, <<: *proxy_url_test_fast, icon: *icon_jp, filter: *reg_jp, exclude-filter: *reg_jp_ex}
+  - {name: 日本STND, <<: *proxy_url_test_stable, icon: *icon_jp, filter: *reg_jp, exclude-filter: *reg_jp_ex}
+  - {name: 日本STND*, <<: *proxy_url_test_stable, icon: *icon_jp, filter: *reg_jp, exclude-filter: *reg_high-rate}
+
+  - {name: 韩国FAST, <<: *proxy_url_test_fast, icon: *icon_kr, filter: *reg_kr }
+  - {name: 韩国STND, <<: *proxy_url_test_stable, icon: *icon_kr, filter: *reg_kr }
+  - {name: 韩国STND*, <<: *proxy_url_test_stable, icon: *icon_kr, filter: *reg_kr, exclude-filter: *reg_high-rate}
+
+  - {name: 欧洲FAST, <<: *proxy_url_test_fast, icon: *icon_eu, filter: *reg_eu }
+  - {name: 欧洲STND, <<: *proxy_url_test_stable, icon: *icon_eu, filter: *reg_eu }
+  - {name: 欧洲STND*, <<: *proxy_url_test_stable, icon: *icon_eu, filter: *reg_eu, exclude-filter: *reg_high-rate}
+
+  - {name: 其他FAST, <<: *proxy_url_test_fast, icon: *icon_un, exclude-filter: *reg_other}
+  - {name: 其他STND, <<: *proxy_url_test_stable, icon: *icon_un, exclude-filter: *reg_other}  
+  - {name: 其他STND*, <<: *proxy_url_test_stable, icon: *icon_un, exclude-filter: *reg_other2}
+
+  - {name: 高级节点, <<: *proxy_select_all, icon: *icon_senior, proxies: [直连, 高级FAST, 高级STND], filter: *reg_senior}
+  - {name: 省流节点, <<: *proxy_select_all, icon: *icon_lower, proxies: [直连, 省流FAST, 省流STND], filter: *reg_lower}
+  - {name: 高级FAST, <<: *proxy_url_test_fast, icon: *icon_senior, filter: *reg_senior}
+  - {name: 省流FAST, <<: *proxy_url_test_fast, icon: *icon_lower, filter: *reg_lower}
+  - {name: 高级STND, <<: *proxy_url_test_stable, icon: *icon_senior, filter: *reg_senior}
+  - {name: 省流STND, <<: *proxy_url_test_stable, icon: *icon_lower, filter: *reg_lower}
+
+#规则提供者（更新mrs格式）
+rule-providers:
+  ai:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ai.mrs"
+  youtube:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/youtube.mrs"
+  tiktok:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/tiktok.mrs"
+  bilibili:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/bilibili.mrs"
+  netflix:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/netflix.mrs"
+  telegramip:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: ipcidr
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/telegramip.mrs"
+  trackerslist:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/trackerslist.mrs"
+  applications:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/applications.list"
+  private:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/private.mrs"
+  privateip:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: ipcidr
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/privateip.mrs"
+  networktest:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/networktest.mrs"
+  apple-cn:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/apple-cn.mrs"
+  google-cn:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/google-cn.mrs"
+  googlefcm:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/googlefcm.mrs"
+  steamcn:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@refs/heads/meta/geo/geosite/steam@cn.mrs"
+  microsoft-cn:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/microsoft-cn.mrs"
+  games-cn:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games-cn.mrs"
+  games:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/games.mrs"
+  gamesip:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: ipcidr
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/gamesip.mrs"
+  mediaip:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: ipcidr
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/mediaip.mrs"
+  media:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/media.mrs"
+  cnip:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: ipcidr
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cnip.mrs"
+  proxy:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/proxy.mrs"
+  cn:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/cn.mrs"
+  ads:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    proxy: DIRECT
+    url: "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@refs/heads/mihomo-ruleset/ads.mrs"
+
+#规则顺序
+rules:
+  - DOMAIN-SUFFIX,captive.apple.com,Apple
+  - DOMAIN-SUFFIX,kamo.teracloud.jp,境内IP
+
+  - RULE-SET,privateip,私有网络,no-resolve
+  - RULE-SET,private,私有网络
+  - RULE-SET,telegramip,Telegram,no-resolve
+  - RULE-SET,ads,广告拦截
+
+  - RULE-SET,networktest,网络测速
+  - RULE-SET,applications,境内软件
+  - RULE-SET,trackerslist,BT下载
+  - RULE-SET,apple-cn,Apple
+  - RULE-SET,microsoft-cn,Microsoft
+  - RULE-SET,google-cn,Google
+  - RULE-SET,steamcn,Steam
+  - RULE-SET,games-cn,境内游戏
+
+  - RULE-SET,googlefcm,Google FCM
+  - RULE-SET,netflix,Netflix
+  - RULE-SET,youtube,Youtube
+  - RULE-SET,tiktok,TikTok
+  - RULE-SET,bilibili,BiliBili
+  - RULE-SET,ai,AI平台
+  - RULE-SET,media,境外媒体
+  - RULE-SET,games,境外游戏
+
+  - RULE-SET,proxy,境外IP
+  - RULE-SET,cn,境内IP
+  - RULE-SET,gamesip,境外游戏
+  - RULE-SET,mediaip,境外媒体
+  - RULE-SET,cnip,境内IP
+
+  - MATCH,漏网之鱼
